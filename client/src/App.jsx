@@ -1,17 +1,11 @@
-function App() {
-  return (
-    <div className="min-h-screen bg-slate-100 flex items-center justify-center">
-      <div className="bg-white shadow-xl rounded-xl p-10">
-        <h1 className="text-4xl font-bold text-blue-600">
-          CampusMate LK
-        </h1>
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { AuthProvider } from "./context/AuthContext.jsx";
+import ProtectedRoute from "./routes/ProtectedRoute";
+import LandingPage from "./pages/LandingPage";
+import LoginPage from "./pages/LoginPage";
+import DashboardPage from "./pages/DashboardPage";
+import ProfilePage from "./pages/ProfilePage";
 
-        <p className="mt-4 text-gray-600">
-          Smart Student Assistant for Sri Lankan Universities
-        </p>
-      </div>
-    </div>
-  );
-}
+function App() { return <AuthProvider><BrowserRouter><Routes><Route path="/" element={<LandingPage />} /><Route path="/login" element={<LoginPage />} /><Route element={<ProtectedRoute />}><Route path="/dashboard" element={<DashboardPage />} /><Route path="/profile" element={<ProfilePage />} /></Route></Routes></BrowserRouter></AuthProvider>; }
 
 export default App;
