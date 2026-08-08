@@ -8,6 +8,9 @@ import { connectDatabase } from "./config/db.js";
 import authRoutes from "./routes/authRoutes.js";
 import userRoutes from "./routes/userRoutes.js";
 import { universityRouter, facultyRouter, degreeRouter } from "./routes/academicRoutes.js";
+import semesterRoutes from "./routes/semesterRoutes.js";
+import moduleRoutes from "./routes/moduleRoutes.js";
+import lectureSessionRoutes from "./routes/lectureSessionRoutes.js";
 import { errorHandler, notFound } from "./middleware/errorMiddleware.js";
 
 const app = express();
@@ -26,6 +29,9 @@ app.use("/api/users", userRoutes);
 app.use("/api/universities", universityRouter);
 app.use("/api/faculties", facultyRouter);
 app.use("/api/degrees", degreeRouter);
+app.use("/api/semesters", semesterRoutes);
+app.use("/api/modules", moduleRoutes);
+app.use("/api/lecture-sessions", lectureSessionRoutes);
 app.use(notFound);
 app.use(errorHandler);
 
